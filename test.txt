@@ -1,1 +1,2 @@
 sample file content of the new repository
+Content added
