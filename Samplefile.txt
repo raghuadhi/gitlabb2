@@ -1,0 +1,745 @@
+Waterfall model - Sequential approach. The software development process progresses linearly through phases like requirements gathering, design, implementation, testing, deployment, and maintenance.
+
+Limitations
+    High amounts of risk and uncertainity.
+    No working software is produced
+    Not a good model for complex and object-oriented projs
+    not suitable when requiremnts are at moderate to high risk of changing.
+
+
+Agile Methodology - each project is broken up into several 'iterations'(all iter should be of same durations) , at end of each iter a working product should be delivered.
+
+
+Agile teams commonly use the following collaboration tools:
+
+Teams (Microsoft): A group chat application from Microsoft. It provides a combined location with workplace chat, meetings, notes, and storage of file attachments. A user can be a member of many teams.
+
+Slack: A commonly used tool for collaboration in Agile and DevOps teams. From a single interface, it provides a series of separate communication channels that can be organized by project, team, or topic. Conversations are kept and are searchable. It is straightforward to add both internal and external team members. Slack integrates with many third-party tools like GitHub for source code and DropBox for document and file storage.
+
+Jira: A commonly used tool for planning, tracking, releasing, and reporting.
+
+Asana: A standard tool designed to keep team plans, progress, and discussions in a single place. It has strong capabilities around timelines and boards.
+
+Glip: An offering from Ring Central that provides chat, video, and task management.
+
+Other standard tools with collaboration offerings include ProofHub, RedBooth, Trello, DaPulse, and many others.
+
+
+
+Devops is a practice that is equated to the study of building and operating rapidly changing systems at scale.
+
+Devops Stages
+
+1. Version Control
+2. Continuous Integration 
+3. Continuous Delivery
+4. Continuous deployment
+
+A build represents one execution of a pipeline.
+
+Continuous delivery (CD) (also known as Continuous Deployment) is a process by which code is built, tested, and deployed to one or more test and production stages. 
+
+Continuous integration (CI) is the practice used by development teams to simplify the testing and building of code.
+
+Source code management
+
+management of changes to document, component programs, large websites, and other collection of information.
+
+Types:
+
+Centralized Version control - uses a central server to store all the files and access central server.
+
+distributed Version Control - each developer has a complete copy (clone) of the entire repository, including its full history, on their local machine.
+
+			- example GIT - git init (to create an an empty local git repository)
+					git add origin <link>
+					git status
+					git commit -m "<Message>"
+					git pull origin master [pull whatever is there in the remote repository to my local repository]
+					git push origin master
+					git config - used to set git configuration values on a global or local - modify the configuration text file 
+					git log - operates and displays commited snapshots
+					git tag - captures a point in history (tag is like a branch that doesn't change)
+					git blame - displays author metadata
+					git branch - series of commits
+					git rebase - integrating changes from one branch onto another.
+					
+					
+
+
+Container Integration: Continuous Delivery.
+example - Jenkins (written in java ) - automatically deploying your application for User Acceptance Test, and then deploying on the prod server for release after every successful build.
+
+Some plugins include - Maven 2 project, Amazon EC2, HTML publisher, copy artifact, join, green balls
+
+
+Configuration Management:
+
+- puppet - helps automate the provisioning, configuration, and management of infrastructure.
+
+	 - dynamic scaling up and scaling down of machines.
+
+Puppet Master - The Puppet Master is the central server that controls the configuration of all managed nodes (agents). It stores the configuration data and compiles it into catalogs.
+
+Puppet Slave - The Puppet Agent is a client that runs on each managed node. It communicates with the Puppet Master to receive configuration instructions and applies them to the node.
+
+Other examples -chef
+	       -ansible
+	       -saltstack				
+	
+
+Containerization (lightweight form of virtualization)- Docker containers - lightweight than	virtual machine
+		docker file -> Docker image (using which can create multiple VM) -> docker Hub -> Staging server and production server. 
+		To start docker - systemctl start docker
+				- docker images
+				- docker pull ubuntu 
+				- docker run -it ubuntu or <imageid> (to get into ubuntu container)
+
+Continuous Monitoring - 
+
+example - Nagios [It is designed to detect and alert on system issues, helping administrators maintain high availability and performance]
+	- 
+here plugins are scripts that can be run from a cmd line to check status of a host.
+
+
+
+Use case :
+
+By Use of Jenkins -
+1. Clone the git repos .
+2. Build a docker image.
+3. Push the image on Docker Hub.				
+				
+
+Creating docker Image - sudo docker <path>
+
+Version Control - Management of changes to any information of data. Types - Local,  Centralized and Decentralized
+
+Storing Versions - Snapshots of all versions are documented and stored properly
+
+Version control Tool - git, subversion, Mercurial, Concurrent Versions system (CVS)
+
+Git and GitHub difference:
+Git - a distributed version control system (DVCS) that allows developers to track changes to their codebase, collaborate with others, and manage different versions of their software projects.
+	Features : 
+		Distributed
+		Compatible
+		Lightweight
+		Non-linear
+		Open Source - released by GPL's license
+		Speed
+		Secure
+
+Github - a web-based platform built on top of Git, offering additional features and services to facilitate collaboration, code review, project management, and community engagement.
+
+
+Repository - storage space where the project  is present
+
+ 1. Central Repo - located on the remote server - whole team can access
+2. Local Repo - located on the local machine - only admin
+
+
+git commit - refers to recording snapshots of the repository
+
+
+Branching - Pointers to a specific commit
+Types
+- local branching 
+- remote - tracking branches
+
+Merging - Combining the work of different branches.
+
+git checkout master - will shift the branch to master.
+
+Rebasing - combining the work between different branches, can be used to make a linear sequence of commits.
+
+
+For SSH authentication of git
+
+-ssh keygen
+
+ssh -T git@github.com
+
+-------------------------------------------------------------------------------------------
+
+Continuous Integration - developers are required to commit changes to the source code in a shared repository several times.
+
+Tools for CI - Jenkins, Buildbot, Travis CI, Atlassian Bamboo
+ 
+Every commit made in the repo is built.
+
+Jenkins Plugins categories - Java
+- Test
+- Report
+- Notification
+- Deployment
+- Compile
+
+Build stage -> Test stage -> Deploy stage 
+
+Building Pipeline
+ 
+Pipeline - Combination of plugins that support the integration and implementation of CD
+
+Jenkins Master - distribute its workload to the slaves
+
+under Jenkins master - Jenkins slaves [woks on the basis of requests received by Jenkins master] 
+
+-------------------------------------------------------------------------------------------
+Docker - tool designed to make it easier to create, deploy and run applications by using containers.
+
+Docker file --> Docker Image (contains all the code) --> Docker Hub --->  staging and production server
+
+
+Docker Registry - storage component for docker Images.
+Images can be stored in either public/private repos
+Docker Hub - docker's cloud repo
+
+
+Docker Images - Read only templates used to create containers   
+
+
+sudo apt-get install docker-engine
+
+sudo service docker start
+
+sudo service pull centos 
+
+sudo docker run -it centos [run the centos image] 
+
+Docker Compose - run applications made up of multiple containers
+
+sudo pip install docker-compose 
+
+docker compose - run multiple containers as a single service
+
+docker swarm - group of VM running the docker application 
+
+----------------------------------------------------------------------
+Kubernetes:
+
+
+Open source container management tool which automates container deployment, container (de)scaling and container load balancing.
+
+Easy scaling of containers is done Kubernetes.
+
+Written in Golang, can group 'n' number of containers.
+
+
+Scaling up is faster than K8s in docker swarm, easy and fast	
+
+All containers will be there in the Kubernetes Mater [controls the clusters of nodes]
+
+						 - [Nodes host the containers inside them] 
+ 						- [PODS are logical collection of containers which need to interact with each other for an application]
+
+Kubernetes Architecture - componenets - API server, Scheduler, Controller manager, etcd.
+
+ku bectl get nodes
+kubectl get podes
+
+
+----------------------------------
+
+Configuration Management Tools:
+
+ex: Ansible - Puppet - Chef - saltstack
+
+Ansible : "Push - based" Configuration management tool - automates entire IT infrastructure
+
+
+Playbooks [Modules, APIs, plugins] 
+    - written in YAML code
+uses of Ansible - Application Deployment, security, Orchestration, provisioning
+
+
+-------------------------------------
+
+Continuous Integration Tools : Puppet, Saltstack, Ansible
+
+Puppet - Deploying, Configuring, managing server.
+
+Puppet master <-> Puppet Agents [SSL connection]
+
+Puppet programs(Manifests) - Manifests are composed of puppet code and their filenames use the .pp extension.
+
+Puppet Modules - collection of manifests and data. Allow code to split your code into multiple manifests.
+
+--------------------------------------------------------------------
+
+Nagios - monitors your entire IT  infrastructure to ensure systems, apps, services and business process are functioning properly
+
+In event of failure, Nagios can alert staff
+
+Nagios process scheduler
+	
+---------------------------------------------------------------------
+
+Selenium - Open Source Web user Interface automation testing suite.
+
+	 - used to automate functional tests.
+ 	 - test scripts written in different languages 
+	 - can be integrated with tools such as TestNG, Junit, Maven, Jenkins, Docker  
+
+
+-----------------------------------------------------------------------
+
+Terraform - server orchestration tool, server provisioning
+
+terraform init - - initializes a terraform working directory by downloading plugins & setting up the backend
+
+terraform plan - creates an execution plan, Allows you to verify the changes before applying them.
+
+terraform apply - Applies the changes required to reach the desired state of the configuration.
+
+terraform show - Shows the current state or a saved plan
+
+terraform validate - Validates the configuration files in a directory. 
+
+terraform destroy
+
+-----------------------------------------------------------------------------
+
+Prometheus - records any numeric time series - monitoring microservices and containerized environments
+
+Grafana (Visualization tool)- open - source platform for monitoring, visualization and analysis of metrics.
+	- provides charts, graphs, alerts
+
+Alerting tools - PagerDuty, servicenow, slack
+
+Storage - influxdb, splunk, aws
+
+Monitoring Tools - Sensu, Nagios 
+
+----------------------------------------------------------------------------
+
+azure devops - Azure Boards, Repos, pipelines, artefacts, test plans.
+aws devops - aws codecommit, codepipeline, codebuild, codedeploy 
+
+---------------------------------------------------------------------------------------------------------------------------
+
+Basics of Devops:
+
+Plan Agile with GitHub Projects and Azure Boards
+GitHub Projects and Azure Boards are tools that help manage agile projects.
+
+GitHub Projects: Visualize and manage work with Kanban-style project boards that integrate with GitHub Issues and pull requests.
+Azure Boards: Provides a rich set of capabilities including backlogs, Kanban boards, sprint planning, and work item tracking to support Agile methodologies.
+Manage Git Branches and Workflows
+Git Branches: Used to develop features, fix bugs, or experiment in isolated environments.
+
+Workflows:
+
+Feature Branch Workflow: Develop features in separate branches before merging them into the main branch.
+Gitflow Workflow: Defines a strict branching model designed around the project release.
+Forking Workflow: Contributors fork the main repository and push changes to their own forks before creating pull requests.
+Collaborate with Pull Requests in Azure Repos
+Pull Requests (PRs) in Azure Repos are a mechanism to review and merge code changes. They enable team collaboration by allowing team members to review code, discuss changes, and ensure code quality before integration.
+
+Explore Git Hooks
+Git Hooks are scripts that Git executes before or after events such as commit, push, and receive. They can be used for tasks like formatting code, running tests, or deploying code.
+
+Plan Foster Inner Source
+Inner Source applies open-source practices within an organization. It promotes code reuse, collaboration, and transparency by enabling teams to contribute to each other’s projects.
+
+Manage Git Repositories
+Managing Git Repositories involves tasks like:
+
+Creating and cloning repositories.
+Managing access controls and permissions.
+Organizing repositories using structures like monorepos or multi-repos.
+Maintaining repository hygiene through archiving or deleting obsolete repositories.
+Identify Technical Debt
+Technical Debt refers to the implied cost of additional rework caused by choosing a quick solution now instead of a better approach that would take longer. It’s identified through code reviews, static analysis, and by tracking known issues and suboptimal code patterns.
+
+Explore Azure Pipelines
+Azure Pipelines is a CI/CD service that builds, tests, and deploys code automatically to any platform.
+
+Build Pipelines: Automate the process of compiling code and running tests.
+Release Pipelines: Automate the deployment of applications to various environments.
+Manage Azure Pipeline Agents and Pools
+Pipeline Agents are machines that run the jobs in your pipelines. Agent Pools are collections of agents that can be shared across multiple projects.
+
+Describe Pipelines and Concurrency
+Pipelines define the workflow of automated tasks (build, test, deploy).
+
+Concurrency: Refers to the ability to run multiple pipeline jobs simultaneously, depending on the number of agents available and the concurrency settings.
+
+Implement a Pipeline Strategy
+Pipeline Strategy involves planning how to structure and manage CI/CD pipelines to optimize development and deployment workflows. It includes considerations like triggers, stages, approvals, and deployment strategies (e.g., blue-green, canary releases).
+
+Integrate with Azure Pipelines
+Integration with Azure Pipelines involves connecting Azure Pipelines with other tools and services (like GitHub, Azure Repos, Docker, Kubernetes) to automate end-to-end workflows.
+
+Introduction to GitHub Actions
+GitHub Actions is a CI/CD platform that allows you to automate workflows directly within your GitHub repositories. It uses YAML syntax to define workflows triggered by events like pushes, pull requests, or schedule.
+
+Learn Continuous Integration with GitHub Actions
+Continuous Integration (CI) with GitHub Actions involves automatically building and testing code changes to ensure that the new code integrates well with the existing codebase. Workflows can be set up to run unit tests, integration tests, and other checks on every commit or pull request.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+-------------------------------------------------------------------------------------------------------------------------------
+Designing a container build strategy involves setting up a systematic and automated approach for building, testing, and deploying containerized applications.
+	
+Version Control System (VCS) Integration:
+Continuous Integration (CI)
+Continuous Delivery (CD)
+Infrastructure as Code (IaC)
+Monitoring and Logging
+
+---------------------------------------------------------------------------------------------------------------------
+
+Create a release pipeline:
+
+1) Set Up the CI Pipeline - to build and push Docker images to the container registry.
+2) Create the Release Pipeline - Navigate to Releases: In your Azure DevOps project, go to Pipelines > Releases.
+   Create New Pipeline: Click on "New pipeline" and choose "Empty job" for a custom pipeline.
+3)Add Stages - Add stages for each environment (development, staging, production).
+
+-------------------------------------------------------------------------------------------------------------
+
+Explore release recommendations
+
+1. Version Control and Branching Strategy
+2. Automated Testing
+3. CI, CD
+4. Infrastructure as Code (IaC)- Use IaC tools like Terraform, CloudFormation, or Ansible to manage your infrastructure, ensuring consistency across environments.
+5. Monitoring and Logging - Prometheus, Grafana, or Datadog to track application performance and health.
+
+------------------------------------------------------------------------------------------------------------------
+
+Provision and test environments:
+1. Terraform
+2. Arm Templates
+---------------------------------------------------------------------------------------------------------------
+
+Deployment Patterns:
+
+a. Blue-Green Deployment:
+
+Maintain two identical production environments: blue (active) and green (inactive).
+Deploy new versions to the inactive environment.
+Switch traffic to the new environment after testing, allowing for zero-downtime deployments.
+
+b. Canary Deployment:
+
+Gradually roll out new versions to a subset of users or servers making it available to entire users.
+Monitor the performance and health of the new version before fully deploying it.	
+Use metrics and feedback to determine whether to proceed with the rollout or rollback.
+
+c. Rolling Deployment:
+
+Deploy new versions gradually across the deployment targets (e.g., instances, pods).
+Monitor the deployment progress and health of each target.
+Rollback automatically if any issues are detected during the deployment.
+
+d. Feature Flags:
+
+Use feature flags to toggle new features on or off in production.
+Gradually enable features for different user segments to control the rollout.
+Rollback features easily if issues arise without redeploying the application.
+
+-------------------------------------------------------------------------------
+
+Implement blue-green deployment and feature toggles.
+
+Blue-green deployment involves maintaining two identical production environments (let's call them Blue and Green). One environment serves the live production traffic (e.g., Blue), while the other (e.g., Green) is idle or running a different version of the application.
+
+Steps:
+
+Setup Two Identical Environments
+
+Deploy the new version of your application to the idle environment (Green).
+
+Run integration and acceptance tests on the Green environment to ensure the new version works as expected.
+
+Switch the router to send all traffic to the Green environment. This can be done using load balancers or DNS switches.
+
+Monitor the Green environment closely for any issues. If issues are found, you can quickly switch back to the Blue environment.
+
+Once the Green environment is stable and confirmed to be working well, you can prepare the Blue environment for the next deployment cycle.
+
+Blue-Green Deployment Tools:
+Kubernetes, AWS Beanstalk, Nginx
+
+--------------------------------------------------------------------------------
+
+Feature toggles (feature flags) allow developers to enable or disable features in production without deploying new code.
+
+Code:
+if feature_toggles.is_enabled('new_feature'):
+    # New feature code
+else:
+    # Old feature code
+
+Tools: LaunchDarkly, Flagsmith, Unleash, ConfigCat.
+
+---------------------------------------------------------------------------------------
+
+Steps to Implement Canary Releases:
+
+1. Prepare the Environment:
+
+Ensure your infrastructure supports routing traffic to different versions of your application. This can be achieved using load balancers, service meshes (like Istio), or Kubernetes.
+
+2. Deploy the New Version:
+
+Deploy the new version of your application alongside the existing version.
+
+3. Route Traffic Gradually to new version. traffic can be controlled by service meshes.
+
+Code: 
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: canary-release
+spec:
+  hosts:
+  - my-service
+  http:
+  - route:
+    - destination:
+        host: my-service
+        subset: v1
+      weight: 95
+    - destination:
+        host: my-service
+        subset: v2
+      weight: 5
+
+------------------------------------------------------------------
+
+Steps to Implement Dark Launching:
+
+Dark launching involves deploying a new feature or version of your application in a way that it is not visible to users but allows you to test it in the production environment.
+
+1. Deploy the New Feature but do not expose it to end-users.
+
+
+2. Route a copy of the live production traffic to the new feature or version. This can be done using techniques like traffic mirroring
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: my-service
+spec:
+  hosts:
+  - my-service
+  http:
+  - route:
+    - destination:
+        host: my-service
+        subset: v1
+  mirror:
+    host: my-service
+    subset: v2
+
+----------------------------------------------------------------------
+
+A/B testing involves comparing two or more versions of an application to determine which one performs better.
+
+Tools for A/B Testing : Google Optimize, Optimizely, Split.io, LaunchDarkly.
+
+Progressive exposure deployment (also known as progressive delivery) - gradually rolling out a new version of your application to users, monitoring its performance, and incrementally increasing its exposure.
+
+Integrating it with Identity Management system, can provide fine-grained control over who gets to see and interact with different versions of your application
+
+--------------------------------------------------------------------------------------------
+
+Infrastructure as a code & Configuration Management: Use Terraform to provision infrastructure and Configuration tools like Ansible, Chef, or Puppet to configure the software and applications on the provisioned infrastructure. Integrate IaC and configuration management with your CI/CD pipeline to automate deployments and ensure consistency across environments.
+
+Terraform:
+
+provider "aws" {
+  region = "us-west-2"
+}
+
+resource "aws_instance" "example" {
+  ami           = "ami-0c55b159cbfafe1f0"
+  instance_type = "t2.micro"
+
+  tags = {
+    Name = "example-instance"
+  }
+}
+ 
+Provisioning IAC:
+
+terraform init
+terraform apply
+
+Ansible Code:
+
+- hosts: all
+  tasks:
+    - name: Ensure Apache is installed
+      apt:
+        name: apache2
+        state: present
+
+Run Ansible playbook
+
+ansible-playbook -i inventory myplaybook.yml
+
+
+Sample Bicep File:
+
+param vnetName string = 'myVnet'
+param addressPrefix string = '10.0.0.0/16'
+param subnetName string = 'mySubnet'
+param subnetPrefix string = '10.0.0.0/24'
+
+resource vnet 'Microsoft.Network/virtualNetworks@2020-06-01' = {
+  name: vnetName
+  location: resourceGroup().location
+  properties: {
+    addressSpace: {
+      addressPrefixes: [
+        addressPrefix
+      ]
+    }
+    subnets: [
+      {
+        name: subnetName
+        properties: {
+          addressPrefix: subnetPrefix
+        }
+      }
+    ]
+  }
+}
+
+output vnetId string = vnet.id
+
+-------------------------------------------------------
+
+Desired State Configuration (DSC) is a management platform in PowerShell that enables deploying and managing configuration data for software services and the environment on which these services run.
+
+1. Write a DSC Configuration Script
+
+# WebServerConfiguration.ps1
+Configuration WebServerConfiguration {
+    Import-DscResource -ModuleName 'PSDesiredStateConfiguration'
+
+    Node 'localhost' {
+        WindowsFeature WebServer {
+            Ensure = 'Present'
+            Name   = 'Web-Server'
+        }
+
+        File WebRoot {
+            Ensure          = 'Present'
+            Type            = 'Directory'
+            Recurse         = $true
+            SourcePath      = '\\path\to\source'
+            DestinationPath = 'C:\inetpub\wwwroot'
+            DependsOn       = '[WindowsFeature]WebServer'
+        }
+    }
+}
+
+# Generate the MOF file
+WebServerConfiguration
+
+2. Generate Management Object Format (MOF) Files:
+
+# Generate the MOF file
+MyWebServerConfiguration -OutputPath C:\DSC\MyWebServerConfiguration
+
+
+3. Apply the Configuration Using LCM
+
+# Apply the configuration
+Start-DscConfiguration -Path C:\DSC\MyWebServerConfiguration -Wait -Verbose
+
+
+----------------------------------------------------------------------------------------------
+
+Secure Devops (DevSecops)- practice of integrating security into every phase of the DevOps lifecycle.
+
+-------------------------------------------------------------------------------------------------
+
+Declarative and Imperative Approach
+
+The declarative approach states what the final state should be.
+
+In the imperative approach, the script states the how for the final state of the machine by executing the steps to get to the finished state.
+
+------------------------------------------------------------------------------------------------------
+
+Open-source software is a type of computer software in which source code is released under a license in which the copyright holder grants users the rights to study, change, and distribute the software to anyone and for any purpose.
+
+Software Composition Analysis (SCA) is the process of identifying and managing open-source and third-party components within a software codebase. 
+
+Microsoft Defender for Cloud is a monitoring service that provides threat protection across all your services both in Azure and on-premises.
+
+------------------------------------------------------------------------------------------------------
+
+To identify the dependencies in your codebase.
+
+1. Duplicate code
+2. High cohesion and low coupling
+3. Codebase can have a slow rate of change
+
+------------------------------------------------------------------------------------------------------
+
+A package is a formalized way of creating a distributable unit of software artifacts that can be consumed from another software solution.
+
+Types of Packages
+
+NuGet - .Net code artifacts.
+npm packages - JavaScript development
+Maven - Java-Based Projects
+PyPi - Python package
+Docker - images
+
+The centralized storage for packages is commonly called a package feed
+
+
+Private feeds can be used where packages should be available to a select audience.
+- Self-hosting
+- SaaS service
+
+GitHub Packages can host:
+
+npm.
+RubyGems.
+Apache Maven.
+Gradle.
+Docker.
+NuGet.
+GitHub's Container registry
+
+Container Images Perimissions: read, write, admin 
+
+Kusto is the primary way to query Log Analytics
+
+
+The main difference between public and private feeds is the need for authentication.
+
+Public feeds can be anonymously accessible and optionally authenticated.
